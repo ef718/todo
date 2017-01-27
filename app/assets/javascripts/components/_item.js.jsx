@@ -16,16 +16,18 @@ var Item = React.createClass({
     },
 
     render() {
-        var description = this.state.editable ? <input type='type' ref='description' defaultValue={this.props.item.description} /> : <p>{this.props.item.description}</p>;
-        var due = this.state.editable ? <input type='type' ref='description' defaultValue={this.props.item.due} /> : <p>{this.props.item.due}</p>;
-        var person = this.state.editable ? <input type='type' ref='description' defaultValue={this.props.item.person} /> : <p>{this.props.item.person}</p>;
+        var description = this.state.editable ? <input type='type' ref='description' defaultValue={this.props.item.description} /> : <p><b>Item {this.props.item.id}:</b> {this.props.item.description}</p>;
+        var due = this.state.editable ? <input type='type' ref='description' defaultValue={this.props.item.due} /> : <span><b>Due by:</b> {this.props.item.due} &nbsp;</span>;
+        var person = this.state.editable ? <input type='type' ref='description' defaultValue={this.props.item.person} /> : <span><b>Assignee:</b> {this.props.item.person}</span>;
         return (
             <div>
                 {description}
                 {due}
                 {person}
-                <button onClick={this.props.handleDelete} >Delete</button>
-                <button onClick={this.handleEdit}> {this.state.editable ? 'Submit' : 'Edit' } </button>
+                <p>
+                    <button onClick={this.props.handleDelete} >Delete</button>
+                    <button onClick={this.handleEdit}> {this.state.editable ? 'Submit' : 'Edit' } </button>
+                </p>
             </div>
         )
     }
